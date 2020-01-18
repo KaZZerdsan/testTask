@@ -1,0 +1,6 @@
+<div class = pictures>
+</div>
+<div class="uploadBlock">
+  <input type="file" accept="image/*" style="display:none" (change)="showPath($event)" #fileUpload>
+  <button mat-fab color="primary" (click)="fileUpload.click()">+</button>
+</div>

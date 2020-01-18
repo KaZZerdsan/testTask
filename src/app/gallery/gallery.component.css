@@ -1,0 +1,23 @@
+
+.pictures{
+  height: 100%;
+  position: absolute;
+  top: 15%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.img_wrap{
+  max-width: 300px;
+  max-height: 300px;
+  padding: 0 10px;
+}
+
+.uploadBlock{
+  position: fixed;
+  width: 100%;
+  bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
