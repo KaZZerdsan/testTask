@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {GalleryComponent} from './gallery/gallery.component';
 import {UserComponent} from './user/user.component';
+import {AuthComponent} from './auth/auth.component';
 
 
 const routes: Routes = [
-  {path: 'gallery', component: GalleryComponent},
-  {path: 'auth', component: UserComponent},
+  {path: '', component: GalleryComponent},
+  {path: 'auth', component: AuthComponent},
   // {path: '**', component: InvalidComponent}
 ];
 

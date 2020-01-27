@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {Post, Posts, ShowImage} from '../core/interfaces/Posts';
+import {PostService} from '../core/services/post.service';
+
 
 @Component({
   selector: 'app-gallery',
@@ -7,18 +10,36 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  showPath(event) {
-    console.log(event);
+  currentPage = 1;
+  failPic = 'assets/img/whoops.png';
+  pictures = [];
+  isShowing = false;
+  pageMax = 1;
+  picToShow: ShowImage;
+
+  setPictures(page: number) {
+    if (page >= 1 && page <= this.pageMax) {
+      this.currentPage = page;
+      this.post.getPhotosByPage(this.currentPage)
+        .subscribe((response: Posts) => {
+            this.pictures = this.post.setPhotos(this.pictures, response.data);
+            console.log(this.pictures);
+            this.pageMax = response.countOfPages;
+          }
+        );
+    }
   }
 
-  constructor(
-    private http: HttpClient) {
+  showPicture(picture: ShowImage) {
+    this.picToShow = picture;
+    this.isShowing = true;
+  }
+
+  constructor(private http: HttpClient,
+              private post: PostService) {
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders();
-    headers.append('Access', '*/*');
-    this.http.get('http://gallery.dev.webant.ru/api/photos?page=1&limit=1', {headers})
-      .subscribe(data => console.log(data));
+    this.setPictures(1);
   }
 }

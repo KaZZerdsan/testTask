@@ -1,0 +1,10 @@
+{
+  "/api/*": {
+    "target": "http://gallery.dev.webant.ru",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

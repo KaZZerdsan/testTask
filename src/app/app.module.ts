@@ -9,7 +9,11 @@ import { RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatSlideToggleModule} from '@angular/material';
 
 
 @NgModule({
@@ -18,15 +22,19 @@ import {HttpClientModule} from '@angular/common/http';
     LayoutComponent,
     UserComponent,
     GalleryComponent,
+    AuthComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatSlideToggleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,44 @@
+<div class="authContainer">
+  <span>
+    <label>Sign Up</label>
+    <mat-slide-toggle [color]="color" [checked]="checked" (change)="checked = !checked">
+    </mat-slide-toggle>
+    <label>Sign In</label>
+  </span>
+
+  <div class *ngIf="checked; else SignInForm">
+    <form [formGroup]="signInForm" (ngSubmit)="checkAuthForm()">
+      <mat-form-field>
+        <input matInput placeholder="ID" formControlName="id" (blur)="checkAuthForm()">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Username" formControlName="username" (blur)="checkAuthForm()">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password" (blur)="checkAuthForm()">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="authValidate | async">Submit</button>
+    </form>
+  </div>
+
+  <ng-template #SignInForm>
+    <form [formGroup]="signUpForm" (ngSubmit)="SignUp()">
+      <mat-form-field>
+      <input matInput placeholder="Full Name" formControlName="fullName" (blur)="checkSignUpForm()">
+     </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" (blur)="checkSignUpForm()">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" formControlName="phone" (blur)="checkSignUpForm()">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Username" formControlName="username" (blur)="checkSignUpForm()">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password" (blur)="checkSignUpForm()">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="signUpValidate | async">Submit</button>
+    </form>
+  </ng-template>
+</div>

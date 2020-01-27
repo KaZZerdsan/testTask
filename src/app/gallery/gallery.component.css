@@ -1,17 +1,75 @@
+img{
+  object-fit: contain;
+}
 
 .pictures{
-  height: 100%;
-  position: absolute;
-  top: 15%;
+  position: relative;
+  height: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.img_wrap{
-  max-width: 300px;
-  max-height: 300px;
-  padding: 0 10px;
+.picture{
+  position: relative;
+  margin: 20px 10px;
+  height: 40%;
+  width: 18%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+}
+
+.picture img{
+  position: relative;
+  height: 400px;
+  min-width: 100%;
+}
+
+.viewContainer{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+}
+
+.viewBlock{
+  position: relative;
+  height: 100%;
+  width: 50%;
+  margin: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px black;
+}
+
+.viewBlock h2{
+  color: #9e0581;
+  font-family: SansSerif;
+}
+
+.viewBlock h3{
+  font-family: SansSerif;
+}
+
+.viewImage{
+  display: flex;
+  align-items: center;
+  height: 75%;
+  width: 90%;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.viewImage img{
+  max-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 15px;
 }
 
 .uploadBlock{
@@ -20,4 +78,8 @@
   bottom: 15px;
   display: flex;
   justify-content: center;
+}
+
+.uploadBlock button{
+  margin: 10px;
 }

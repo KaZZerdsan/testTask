@@ -1,6 +1,23 @@
 <div class = pictures>
+  <img *ngIf="pictures.length===0" [src]="failPic">
+  <div class = picture *ngFor="let picture of pictures" (click)="showPicture(picture)">
+    <img src={{picture.url}}>
+  </div>
 </div>
-<div class="uploadBlock">
-  <input type="file" accept="image/*" style="display:none" (change)="showPath($event)" #fileUpload>
-  <button mat-fab color="primary" (click)="fileUpload.click()">+</button>
+<div class = viewContainer *ngIf="isShowing" (click)="isShowing=false">
+  <div class = viewBlock>
+    <div class="viewImage">
+      <img src={{picToShow.url}}>
+    </div>
+    <h2>{{picToShow.name}}</h2>
+    <h3>{{picToShow.description}}</h3>
+  </div>
+</div>
+<div *ngIf="!isShowing" class="uploadBlock">
+  <input type="file" accept="image/*" style="display:none" #fileUpload>
+  <button mat-fab color="primary" (click)="setPictures(1)"><<</button>
+  <button mat-fab color="primary" (click)="setPictures(currentPage - 1)"><</button>
+  <button mat-fab color="primary">+</button>
+  <button mat-fab color="primary" (click)="setPictures(currentPage + 1)">></button>
+  <button mat-fab color="primary" (click)="setPictures(pageMax)">>></button>
 </div>
